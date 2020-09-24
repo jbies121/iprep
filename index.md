@@ -1,37 +1,55 @@
-## Welcome to GitHub Pages
+# IPRep 
+master
 
-You can use the [editor on GitHub](https://github.com/jbies121/IPRep/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![.NET Core](https://github.com/jbies121/iprep/workflows/.NET%20Core/badge.svg)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![CodeQL](https://github.com/jbies121/IPRep/workflows/CodeQL/badge.svg?branch=master)
 
-### Markdown
+APIKeyRing
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![.NET Core](https://github.com/jbies121/IPRep/workflows/.NET%20Core/badge.svg?branch=APIKeyRing)
 
-```markdown
-Syntax highlighted code block
+## IP Reputation tool for .NET Core 3.1
+This tool was developed with the blue team in mind to quickly determine IP origin and reputation.
+Using user supplied API keys, IP addresses and ranges can be checked against reputation services quickly and consumed in a usable way.
+Supporting multiple APIs allows users to access fresh and diverse reputation sources, and provides some fault tolerance when services are interrupted.
 
-# Header 1
-## Header 2
-### Header 3
+This project aims to stay lightweight and platform independent.
 
-- Bulleted
-- List
+### Supported APIs
+- AbuseIPDB
+  - CHECK endpoint
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### Usage
+From an executable:
+```powershell
+.\iprep.exe [ip] [info] [-service]
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+From within the project directory:
+```powershell 
+dotnet run [ip] [info] [-service]
+```
 
-### Jekyll Themes
+### Example
+```powershell
+.\iprep.exe 8.8.8.8 score -AIPDB
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jbies121/IPRep/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### 'service' options currently available
+- -AIPDB : AbuseIPDB
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### 'info' options currently available
+- score
+- isPublic
+- ipVersion
+- isWhitelisted
+- countryCode
+- usageType
+- isp
+- domain
+- hostnames
+- countryName
+- totalReports
+- numDistinctUsers
+- lastReportedAt
